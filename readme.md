@@ -2,10 +2,6 @@
 
 Author: Ryan Ham, Bsc. Artificial Intelligence Student at the University of Groningen,
 
-Notes:
-I recently passed the Object Oriented Programming course and thus my current focus is readability, abstraction and reusability.
-However, since the input is guaranteed and problem scope narrow, there actually is no need for abstraction and such.
-
 ### Summary Table
 
 | Day   | Stars | Tries Part 1 | Tries Part 2 | Time Complexity       | Evaluation                                                                                                                                                                                                                 |
