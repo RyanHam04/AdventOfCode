@@ -1,6 +1,7 @@
 import numpy as np
 from typing import Tuple
 
+
 # Changes in coordinates for: Up, right, down, left respectively
 ORIENTATIONS = [(0, -1), (1, 0), (0, 1), (-1, 0)]
 
@@ -43,10 +44,7 @@ def pad(data: np.ndarray) -> np.ndarray:
     Returns:
         np.ndarray: Data with a ring of empty strings
     """
-    return np.pad(data,
-                  pad_width=1,
-                  mode='constant',
-                  constant_values="")
+    return np.pad(data, pad_width=1, mode="constant", constant_values="")
 
 
 def find_start(data: np.ndarray) -> Tuple[int, int]:
@@ -79,8 +77,9 @@ def modify_coordinates(x: int, y: int, orientation: int) -> Tuple[int, int]:
     return x, y
 
 
-def calculate_route(data: np.ndarray, x: int, y: int,
-                    orientation: int, count: int) -> int:
+def calculate_route(
+    data: np.ndarray, x: int, y: int, orientation: int, count: int
+) -> int:
     """
     Calculates the route a guard patrols,
     every time an obstacle is encountered (Indicated by #),
@@ -119,7 +118,7 @@ def calculate_route(data: np.ndarray, x: int, y: int,
 
 if __name__ == "__main__":
 
-    data = read_data("inputs/Assignment6_input.txt")
+    data = read_data("2024/inputs/Assignment6_input.txt")
     padded = pad(data)
     y, x = find_start(padded)
 
