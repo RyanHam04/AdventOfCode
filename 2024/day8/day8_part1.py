@@ -38,12 +38,12 @@ def create_character_locations(input_map: List[List[str]]) -> Dict:
             if char != ".":
                 if char not in character_locations:
                     character_locations[char] = []
-                character_locations[char].append((x, y))
+                character_locations[char].append((y, x))  # Accidentally swapped the x and y :)
 
     return character_locations
 
 
-def calculate(all_locations: dict) -> set:
+def calculate(all_locations: dict, data: List[List[str]]) -> set:
     """
     Calculates where all anti-nodes should be
 
@@ -87,5 +87,4 @@ def calculate(all_locations: dict) -> set:
 if __name__ == "__main__":
     data = read_data("2024/inputs/Assignment8_sample.txt")
     all_locations = create_character_locations(data)
-    all_antinodes = calculate(all_locations)
-    print(len(all_antinodes))
+    all_antinodes = calculate(all_locations, data)
