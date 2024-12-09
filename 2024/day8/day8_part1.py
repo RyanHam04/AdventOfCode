@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import List, Dict, Set, Tuple
 
 
 def read_data(file_path: str) -> List[List[str]]:
@@ -20,7 +20,9 @@ def read_data(file_path: str) -> List[List[str]]:
     return all_data
 
 
-def create_character_locations(input_map: List[List[str]]) -> Dict:
+def create_character_locations(
+    input_map: List[List[str]],
+) -> Dict[str, List[Tuple[int, int]]]:
     """
     Finds all characters and adds it's string, and coordinates to a dict
 
@@ -28,8 +30,9 @@ def create_character_locations(input_map: List[List[str]]) -> Dict:
         input_map (List[List[str]]): The processed input data
 
     Returns:
-        Dict: A dictionary where the characters are the keys,
-        and the coordinates are the values
+        Dict[str, List[Tuple[int, int]]]:
+            A dictionary where the characters are the keys,
+            and the coordinates are the values
     """
     character_locations = {}
 
@@ -38,21 +41,30 @@ def create_character_locations(input_map: List[List[str]]) -> Dict:
             if char != ".":
                 if char not in character_locations:
                     character_locations[char] = []
-                character_locations[char].append((y, x))  # Accidentally swapped the x and y :)
+                character_locations[char].append(
+                    (y, x)  	# Accidentally swapped the x and y :)
+                )
 
     return character_locations
 
 
-def calculate(all_locations: dict, data: List[List[str]]) -> set:
+def calculate(
+    all_locations: Dict[str, List[Tuple[int, int]]],
+    data: List[List[str]]
+) -> Set[Tuple[int, int]]:
     """
     Calculates where all anti-nodes should be
 
     Args:
-        all_locations (dict): A dict with all characters as keys
-        and its occurrences as values.
+        all_locations (Dict[str, List[Tuple[int, int]]]):
+        A dict with all characters as keys and its occurrences as values.
+
+        data (List[List[str]]): The data in a nested list
+
 
     Returns:
-        set: A set for non duplication with all locations of antinodes
+        Set[Tuple[int, int]]:
+            A set for non duplication with all locations of antinodes
     """
     all_antinodes = set()
     map_height = len(data)
@@ -69,16 +81,12 @@ def calculate(all_locations: dict, data: List[List[str]]) -> set:
                 antinode1 = (x1 - dx, y1 - dy)
                 antinode2 = (x2 + dx, y2 + dy)
 
-                if (
-                    0 <= antinode1[0] < map_height
-                    and 0 <= antinode1[1] < map_width
-                ):
+                if (0 <= antinode1[0] < map_height
+                        and 0 <= antinode1[1] < map_width):
                     all_antinodes.add(antinode1)
 
-                if (
-                    0 <= antinode2[0] < map_height
-                    and 0 <= antinode2[1] < map_width
-                ):
+                if (0 <= antinode2[0] < map_height
+                        and 0 <= antinode2[1] < map_width):
                     all_antinodes.add(antinode2)
 
     return all_antinodes
