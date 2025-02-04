@@ -2,6 +2,9 @@
 
 Author: Ryan Ham, Bsc. Artificial Intelligence Student at the University of Groningen,
 
+Discontinued after day 8, because my laptop broke down. This gave me a significant delay, and thus I decided to focus on other projects. 
+
+
 ### Summary Table
 
 | Day   | Stars | Tries Part 1 | Tries Part 2 | Time Complexity                                      | Evaluation                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
